@@ -30,33 +30,30 @@ export default function Home() {
     return () => clearInterval(interval);
   }, []);
 
+  // ✅ Simulated CMP logic for deployment without backend
   const fetchCMPs = async () => {
     const enriched: EnrichedStock[] = [];
 
     for (const stock of portfolioData) {
-      try {
-        const res = await fetch(`http://localhost:5000/api/stock/${stock.stock}`);
-        const data = await res.json();
+      const randomFluctuation = (Math.random() * 0.2) - 0.1; // -10% to +10%
+      const cmp = stock.purchasePrice * (1 + randomFluctuation);
 
-        const investment = stock.purchasePrice * stock.quantity;
-        const presentValue = data.cmp * stock.quantity;
-        const gainLoss = presentValue - investment;
+      const investment = stock.purchasePrice * stock.quantity;
+      const presentValue = cmp * stock.quantity;
+      const gainLoss = presentValue - investment;
 
-        enriched.push({
-          name: stock.name,
-          symbol: stock.stock,
-          sector: stock.sector,
-          purchasePrice: stock.purchasePrice,
-          quantity: stock.quantity,
-          exchange: stock.exchange,
-          cmp: data.cmp,
-          investment,
-          presentValue,
-          gainLoss,
-        });
-      } catch (error) {
-        console.error("Fetch failed", error);
-      }
+      enriched.push({
+        name: stock.name,
+        symbol: stock.stock,
+        sector: stock.sector,
+        purchasePrice: stock.purchasePrice,
+        quantity: stock.quantity,
+        exchange: stock.exchange,
+        cmp,
+        investment,
+        presentValue,
+        gainLoss,
+      });
     }
 
     setStocks(enriched);
@@ -181,4 +178,3 @@ export default function Home() {
       )}
     </main>
   );
-}
