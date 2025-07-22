@@ -1,0 +1,81 @@
+# 📊 My Portfolio Dashboard
+
+A sleek, real-time, and stylish stock portfolio dashboard built with **Next.js 15** and **Tailwind CSS**, powered by a custom backend API. It fetches current stock prices (CMP), calculates gains/losses, and displays sector-wise and stock-wise breakdowns with charts, filters, dark mode, and Excel export.
+
+---
+
+## 🔧 Tech Stack
+
+- **Frontend:** Next.js (App Router), Tailwind CSS, TypeScript
+- **Backend:** Node.js + Express
+- **Data Source:** Custom API (can be connected to real stock APIs)
+- **Features:** Dark/Light mode, Export to Excel, Sector Filter, Gain/Loss Animations, Glossy UI
+
+---
+
+## 📁 Project Structure
+
+My-Portfolio-Dashboard/
+├── backend/ # Express.js server fetching CMP data
+├── src/
+│ ├── app/
+│ │ ├── page.tsx # Main dashboard UI
+│ │ ├── layout.tsx # Root layout
+│ │ └── globals.css # Tailwind + custom styles (including background)
+│ ├── data/
+│ │ └── portfolio.ts # Portfolio stocks list
+│ └── ...
+├── public/ # Static assets
+├── package.json
+└── README.md
+
+
+
+---
+
+## 🚀 Live Features
+
+- 🎨 Glossy, modern UI with animated stock rows
+- 🌗 Dark & Light mode toggle
+- 🔍 Filter portfolio by sector
+- 📤 Export portfolio to Excel (`.xlsx`)
+- 📈 Real-time CMP update every 15 seconds
+- 🧮 Gain/Loss with arrows (▲ ▼) and live number counters
+- 🖼️ Background image support (editable in `globals.css`)
+
+---
+
+## ⚙️ Setup Instructions
+
+### ✅ 1. Clone the Repo
+
+```bash
+git clone https://github.com/vishnu0403/My-Portfolio-Dashboard.git
+cd My-Portfolio-Dashboard
+
+2. Install dependencies
+
+frontend
+
+cd frontend  # if using a separate folder, otherwise stay in root
+npm install
+
+
+Backend
+
+cd backend
+npm install
+
+
+3. Start Backend Server
+
+cd backend
+npm run dev
+
+
+4. Start Frontend (Next.js)
+bash
+Copy
+Edit
+cd frontend  # or stay in root if frontend is in root
+npm run dev
